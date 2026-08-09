@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
+
+@font-face {
+    font-family: "Matcha Mint";
+    src: url("../static/MatchaMint.ttf");
+}
+
+html,
+body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: #f8faff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Roboto Slab", serif;
+}
+
+@media screen and (width < 1000px) {
+    .lg-only {
+        display: none;
+    }
+}
+
+@media screen and (width >= 1000px) {
+    .sm-only {
+        display: none;
+    }
+}
+
+#root {
+    width: calc(min(1000px, 90vw));
+    padding-top: 2rem;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    font-family: "Matcha Mint", sans-serif;
+    background-color: #db8ffa;
+    border: 1px solid #7f4098;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+#header-left,
+#header-right {
+    font-size: 36pt;
+    margin: 0;
+}
+
+@media screen and (width >= 1000px) {
+    #header-right {
+        color: #8e8e8e;
+        text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            1px 1px 0 #000,
+            -1px 1px 0 #000;
+    }
+}
+
+#header-spacer {
+    flex-grow: 1;
+}
+
+#footer {
+    display: flex;
+    align-items: center;
+    background-color: #8b52a2;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-size: 14pt;
+}
+
+#footer > a {
+    color: #eee;
+    padding: 0 0.5rem;
+    text-decoration: none;
+    border-radius: calc(10px - 0.5rem);
+}
+
+#footer > a:hover {
+    background-color: #a063b8;
+}
+
+#footer-divider {
+    height: 1em;
+    width: 0;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+}
