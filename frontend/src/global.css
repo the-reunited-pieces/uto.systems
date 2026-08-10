@@ -51,12 +51,18 @@ body {
 #header {
     display: flex;
     align-items: center;
+    gap: 16px;
     font-family: "Matcha Mint", sans-serif;
     background-color: #a6b1e1;
     border: 1px solid #455cc1;
     border-radius: 10px;
     padding: 32px;
     margin-top: 32px;
+}
+
+#header-image {
+    width: 5rem;
+    height: 5rem;
 }
 
 #header-left,

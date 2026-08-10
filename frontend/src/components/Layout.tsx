@@ -4,6 +4,7 @@ export function Layout({ children }: React.PropsWithChildren) {
     return (
         <div id="layout">
             <header id="header">
+                <img id="header-image" src="/static/outlined-icon.svg" />
                 <h1 id="header-left" className="lg-only">
                     Uto
                 </h1>
