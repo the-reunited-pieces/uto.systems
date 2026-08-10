@@ -1,0 +1,16 @@
+.fronters {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+.fronter-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.fronter-name {
+    font-size: 14pt;
+}

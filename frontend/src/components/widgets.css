@@ -1,0 +1,66 @@
+.widget {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+}
+
+.widget h1,
+.widget h2,
+.widget h3,
+.widget h4,
+.widget h5,
+.widget h6 {
+    font-family: "Matcha Mint", sans-serif;
+}
+
+@media screen and (width >= 1000px) {
+    .widget-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: space;
+        gap: 32px;
+    }
+}
+
+@media screen and (width < 1000px) {
+    .widget-container {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        /* overflow-x: hidden;
+        display: grid;
+        grid-template-columns: 100% 100% 100%;
+        align-items: stretch;
+        gap: 32px; */
+    }
+
+    .widget {
+        width: 100%;
+    }
+
+    .arrow {
+        position: absolute;
+        z-index: 200;
+        background-color: #dddd;
+        padding: 0.25rem 0.5rem;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 120%;
+        backdrop-filter: blur(1px);
+    }
+
+    .arrow.left {
+        left: 1rem;
+    }
+
+    .arrow.right {
+        right: 1rem;
+    }
+}
