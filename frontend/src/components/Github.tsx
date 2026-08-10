@@ -44,7 +44,7 @@ export function Github() {
 
                             return (
                                 <div
-                                    className={`contribution-square tier-${day.contributionCount === 0 ? "0" : Math.floor(((day.contributionCount - 1) / max) * 4)}`}
+                                    className={`contribution-square tier-${day.contributionCount === 0 ? "0" : Math.floor(((day.contributionCount - 1) / max) * 4) + 1}`}
                                     data-title={`${day.contributionCount} contribution${day.contributionCount === 1 ? "" : "s"} on ${MONTHS[date.getMonth()]} ${ordinal(date.getDate())}`}
                                 ></div>
                             );
