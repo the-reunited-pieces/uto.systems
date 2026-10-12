@@ -19,10 +19,10 @@ export function Fronter() {
                 "No fronters registered."
             ) : (
                 <div className="fronters">
-                    {fronters.map(({ name, avatarURL }) => (
+                    {fronters.map(({ display_name, avatar_url }) => (
                         <>
-                            <img className="fronter-avatar" src={avatarURL ?? undefined} />
-                            <span className="fronter-name">{name}</span>
+                            <img className="fronter-avatar" src={avatar_url ?? undefined} />
+                            <span className="fronter-name">{display_name}</span>
                         </>
                     ))}
                 </div>

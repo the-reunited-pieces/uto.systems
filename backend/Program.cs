@@ -2,18 +2,18 @@ using System.Net;
 using System.Net.Http.Headers;
 using backend;
 using backend.types;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 const string CORS_ALLOW_ALL = "_allow_all";
 
-var client = new MongoClient(Configuration.GetEnvVar("MONGODB_URI"));
-var database = client.GetDatabase(Configuration.GetEnvVar("MONGODB_DATABASE"));
-var users = database.GetCollection<User>("users");
+var httpClient_GitHub = new HttpClient();
+httpClient_GitHub.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Configuration.GetEnvVar("GITHUB_TOKEN"));
+httpClient_GitHub.DefaultRequestHeaders.UserAgent.ParseAdd("uto.systems");
 
-var httpClient = new HttpClient();
-
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Configuration.GetEnvVar("GITHUB_TOKEN"));
-httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("uto.systems");
+var httpClient_PK = new HttpClient();
+httpClient_PK.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", Configuration.GetEnvVar("PK_TOKEN"));
+httpClient_PK.DefaultRequestHeaders.UserAgent.ParseAdd("uto.systems");
 
 string[] activityEventTypes = ["CreateEvent", "PushEvent"];
 
@@ -32,30 +32,23 @@ app.UseCors(CORS_ALLOW_ALL);
 
 app.MapGet("/sysinfo", async (HttpRequest req) =>
 {
-    var cursor = await users.FindAsync(Builders<User>.Filter.Eq(u => u.UserId, Configuration.GetEnvVar("UTO_ID")));
-    var doc = await cursor.FirstAsync();
+    SysInfo systemInfo = new(null, null);
 
-    if (doc == null || doc.Members == null) return Results.Accepted("[]");
-
+    var members_response = await httpClient_PK.GetAsync("https://api.pluralkit.me/v2/systems/@me/members");
+    var fronters_response = await httpClient_PK.GetAsync("https://api.pluralkit.me/v2/systems/@me/fronters");
+    
     req.Headers.ContentType = "application/json";
+    var Fronters = await fronters_response.Content.ReadFromJsonAsync<Switch>();
 
-    return Results.Ok(
-        new SysinfoResponse(
-            doc.Fronters ?? [],
-            [.. doc.Members
-                .Select(member => new MemberResponse(
-                    member.Id,
-                    member.GlobalConfiguration?.DisplayName ?? member.Name,
-                    member.GlobalConfiguration?.Description,
-                    member.GlobalConfiguration?.AvatarURL
-                ))]
-        )
-    );
+    systemInfo.Members = await members_response.Content.ReadFromJsonAsync<Member[]>();
+    systemInfo.Fronters = Fronters?.members.Select(member => member.Id).ToArray();
+
+    return Results.Ok(systemInfo);
 });
 
 app.MapGet("/github-contributions-weeks", async () =>
 {
-    var response = await httpClient.PostAsJsonAsync("https://api.github.com/graphql", new
+    var response = await httpClient_GitHub.PostAsJsonAsync("https://api.github.com/graphql", new
     {
         query = """
             query($userName: String!) {
@@ -88,7 +81,7 @@ app.MapGet("/github-contributions-weeks", async () =>
 
 app.MapGet("/github-recent-projects", async () =>
 {
-    var response = await httpClient.GetFromJsonAsync<GithubEvent[]>($"https://api.github.com/users/{Configuration.GetEnvVar("GITHUB_USERNAME")}/events/public");
+    var response = await httpClient_GitHub.GetFromJsonAsync<GithubEvent[]>($"https://api.github.com/users/{Configuration.GetEnvVar("GITHUB_USERNAME")}/events/public");
     if (response == null) return Results.InternalServerError();
 
     return Results.Ok(response

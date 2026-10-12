@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type Sysinfo = {
     fronters: string[];
-    members: { id: string; name: string | null; description: string | null; avatarURL: string | null }[];
+    members: { id: string; name: string | null; display_name: string | null; description: string | null; avatar_url: string | null }[];
 };
 
 export function useSysinfo() {
@@ -25,8 +25,9 @@ export function useSysinfo() {
                     if (!member) throw null;
                     if (typeof member.id !== "string") throw null;
                     if (member.name !== null && typeof member.name !== "string") throw null;
+                    if (member.display_name !== null && typeof member.display_name !== "string") throw null;
                     if (member.description !== null && typeof member.description !== "string") throw null;
-                    if (member.avatarURL !== null && typeof member.avatarURL !== "string") throw null;
+                    if (member.avatar_url !== null && typeof member.avatar_url !== "string") throw null;
                 });
 
                 setSysinfo(data);
