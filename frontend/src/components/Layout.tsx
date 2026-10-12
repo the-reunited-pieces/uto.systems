@@ -13,6 +13,8 @@ export function Layout({ children }: React.PropsWithChildren) {
             </header>
             <main>{children}</main>
             <footer id="footer">
+                <a href="/">Home</a>
+                <div id="footer-divider"></div>
                 <a href="/alters">Alters</a>
                 <div id="footer-divider"></div>
                 <a href="/projects">Projects</a>

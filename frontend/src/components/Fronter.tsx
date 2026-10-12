@@ -1,19 +1,19 @@
-import { useSysinfo } from "@/hooks/useSysinfo";
+import { useSysFronters } from "@/hooks/useSysFronters";
 import "./fronter.css";
 
 export function Fronter() {
-    const sysinfo = useSysinfo();
+    const sysFronters = useSysFronters();
 
-    const fronters = sysinfo?.fronters
-        .map((id) => sysinfo.members.find((member) => member.id === id))
+    const fronters = sysFronters?.fronters
+        .map((id) => sysFronters.members.find((member) => member.id === id))
         .filter((member) => member !== undefined);
 
     return (
         <>
             <h2>Current Fronter{fronters?.length === 1 ? "" : "s"}</h2>
-            {sysinfo === undefined ? (
+            {sysFronters === undefined ? (
                 "Loading..."
-            ) : sysinfo === null ? (
+            ) : sysFronters === null ? (
                 "Error fetching system info from API."
             ) : !fronters?.length ? (
                 "No fronters registered."

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-type Sysinfo = {
+type SysAlters = {
     fronters: string[];
     members: { id: string; name: string | null; display_name: string | null; description: string | null; avatar_url: string | null }[];
 };
 
-export function useSysinfo() {
-    const [sysinfo, setSysinfo] = useState<Sysinfo | undefined | null>(undefined);
+export function useSysAlters() {
+    const [sysalters, setSysalters] = useState<SysAlters | undefined | null>(undefined);
 
     useEffect(() => {
         fetch(`${process.env.BUN_PUBLIC_API}/sysinfo`)
@@ -14,12 +14,7 @@ export function useSysinfo() {
                 if (!res.ok) throw null;
 
                 const data = await res.json();
-                if (!Array.isArray(data.fronters)) throw null;
                 if (!Array.isArray(data.members)) throw null;
-
-                data.fronters.forEach((fronter: any) => {
-                    if (typeof fronter !== "string") throw null;
-                });
 
                 data.members.forEach((member: any) => {
                     if (!member) throw null;
@@ -30,10 +25,10 @@ export function useSysinfo() {
                     if (member.avatar_url !== null && typeof member.avatar_url !== "string") throw null;
                 });
 
-                setSysinfo(data);
+                setSysalters(data);
             })
-            .catch(() => setSysinfo(null));
+            .catch(() => setSysalters(null));
     }, []);
 
-    return sysinfo;
+    return sysalters;
 }
