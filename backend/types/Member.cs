@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace backend.types
 {
-    public class Member(string? id, string? name, string? display_name, string? description, string? avatar_url)
+    public class Member(string? id, string? name, string? display_name, string? description, string? avatar_url, string? pronouns)
     {
         [JsonInclude]
         public readonly string? Id = id;
@@ -14,5 +14,8 @@ namespace backend.types
         public readonly string? Description = description;
         [JsonInclude]
         public readonly string? Avatar_url = avatar_url;
+
+        [JsonInclude]
+        public readonly string? Pronouns = pronouns;
     }
 }

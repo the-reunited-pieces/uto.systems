@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type SysAlters = {
     fronters: string[];
-    members: { id: string; name: string | null; display_name: string | null; description: string | null; avatar_url: string | null }[];
+    members: { id: string; name: string | null; display_name: string | null; description: string | null; avatar_url: string | null; pronouns: string | null }[];
 };
 
 export function useSysAlters() {
@@ -23,6 +23,7 @@ export function useSysAlters() {
                     if (member.display_name !== null && typeof member.display_name !== "string") throw null;
                     if (member.description !== null && typeof member.description !== "string") throw null;
                     if (member.avatar_url !== null && typeof member.avatar_url !== "string") throw null;
+                    if (member.pronouns !== null && typeof member.pronouns !== "string") throw null;
                 });
 
                 setSysalters(data);
