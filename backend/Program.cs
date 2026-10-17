@@ -2,7 +2,6 @@ using System.Net;
 using System.Net.Http.Headers;
 using backend;
 using backend.types;
-using MongoDB.Driver;
 
 const string CORS_ALLOW_ALL = "_allow_all";
 
@@ -80,7 +79,7 @@ app.MapGet("/github-contributions-weeks", async () =>
 
 app.MapGet("/github-recent-projects", async () =>
 {
-    var response = await httpClient_GitHub.GetFromJsonAsync<GithubEvent[]>($"https://api.github.com/users/{Configuration.GetEnvVar("GITHUB_USERNAME")}/events/public");
+    var response = await httpClient_GitHub.GetFromJsonAsync<GithubEvent[]>($"https://api.github.com/users/{Configuration.GetEnvVar("GITHUB_USERNAME")}/events");
     if (response == null) return Results.InternalServerError();
 
     return Results.Ok(response

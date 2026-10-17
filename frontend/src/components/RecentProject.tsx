@@ -13,11 +13,7 @@ export function RecentProject() {
             ) : (
                 <ul>
                     {projects.map((project) => (
-                        <li>
-                            <a href={`https://github.com/${project}`} target="_blank">
-                                {project.split("/")[1]}
-                            </a>
-                        </li>
+                        <li>{project.split("/")[1]}</li>
                     ))}
                 </ul>
             )}
