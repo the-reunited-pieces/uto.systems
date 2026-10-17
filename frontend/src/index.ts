@@ -7,6 +7,7 @@ const server = serve({
     routes: {
         "/": index,
         "/static/outlined-icon.svg": Bun.file("static/outlined-icon.svg"),
+        "/static/outlined-icon.png": Bun.file("static/outlined-icon.png"),
         "/alters": alters,
         "/projects": projects,
     },

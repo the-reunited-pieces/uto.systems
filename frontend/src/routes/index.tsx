@@ -15,7 +15,7 @@ function Index() {
             <div className="side-by-side">
                 <Widgets widgets={[<Fronter />, <LifeStats />, <Github />, <RecentProject />]} />
                 <div>
-                    <p>Hi, I'm Uto.</p>
+                    <p>Hi! We're the Missing Pieces system! We also go by the collective name of Uto. We'll be updating this site with new updates, pages & more as we think of adding more to here. :)</p>
                 </div>
             </div>
         </Layout>
