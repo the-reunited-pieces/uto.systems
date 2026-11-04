@@ -1,0 +1,17 @@
+{
+  "name": "backend-ts",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "^1.4.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/node": "^26.6.6",
+    "graphql": "^17.0.2",
+    "graphql-request": "^7.4.0"
+  }
+}

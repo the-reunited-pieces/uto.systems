@@ -9,6 +9,7 @@ export function useGithubRecentProjects() {
                 if (!res.ok) throw null;
 
                 const data = await res.json();
+                console.log("Fetched recent projects:", data);
                 if (!Array.isArray(data)) throw null;
                 if (data.some((item) => typeof item !== "string")) throw null;
 

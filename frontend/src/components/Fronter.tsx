@@ -4,8 +4,7 @@ import "./fronter.css";
 export function Fronter() {
     const sysFronters = useSysFronters();
 
-    const fronters = sysFronters?.fronters
-        .map((id) => sysFronters.members.find((member) => member.id === id))
+    const fronters = sysFronters?.fronters.members
         .filter((member) => member !== undefined);
 
     return (
