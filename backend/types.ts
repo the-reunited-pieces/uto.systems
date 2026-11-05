@@ -22,3 +22,10 @@ export interface GitHubEvent {
     type: string | null;
     repo: { name: string | null; }
 }
+
+export interface Repository {
+    repository: {
+        name: string | null;
+        url: string | null;
+    }
+}

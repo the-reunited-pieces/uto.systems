@@ -1,17 +1,16 @@
+import { Repos as ReposComponent } from "@/components/Repositories";
 import { Layout } from "@/components/Layout";
-import { Repositories } from "@/components/repositories";
-import { Widgets } from "@/components/Widgets";
 import { createRoot } from "react-dom/client";
 import "../global.css";
 
 const root = document.getElementById("root")!;
 
-function Projects() {
+function Repos() {
     return (
         <Layout>
-                <Widgets widgets={[<Repositories />, ]} />
+            <ReposComponent />
         </Layout>
     );
 }
 
-createRoot(root).render(<Projects />);
+createRoot(root).render(<Repos />);

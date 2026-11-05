@@ -11,6 +11,8 @@ export function LifeStats() {
                 <b>Age:</b> {age}
                 <br />
                 <b>Country:</b> Netherlands 🇳🇱
+                <br />
+                <b>Magic games won:</b> 2
             </p>
         </>
     );

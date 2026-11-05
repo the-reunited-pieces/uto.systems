@@ -1,6 +1,6 @@
 import { fetch } from "bun";
 import { gql, GraphQLClient } from "graphql-request";
-import type { GitHubEvent } from "./types";
+import type { GitHubEvent, Repository } from "./types";
 
 const server = Bun.serve({
     port: 5214,
@@ -18,10 +18,10 @@ const server = Bun.serve({
             }).then((res) => res.json());
             return new Response(JSON.stringify({ fronters, members }), {
                 headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
-                }
-            })
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                },
+            });
         },
         "/github-contributions-weeks": async () => {
             const graphQLClient = new GraphQLClient("https://api.github.com/graphql", {
@@ -53,9 +53,9 @@ const server = Bun.serve({
             const res = await graphQLClient.request(query, variables);
             return new Response(JSON.stringify(res.user.contributionsCollection.contributionCalendar.weeks), {
                 headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
-                }
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                },
             });
         },
         "/github-repositories": async () => {
@@ -84,32 +84,44 @@ const server = Bun.serve({
             };
 
             const res = await graphQLClient.request(query, variables);
-            return new Response(JSON.stringify(res), {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
-                }
-            });
+            const repositories = res.user.contributionsCollection.commitContributionsByRepository as Repository[];
+            return new Response(
+                JSON.stringify(
+                    repositories.filter((repo) =>
+                        ["WeAreUto", "the-reunited-pieces", "TransGG"].includes(
+                            repo.repository.url?.split("/")[3] ?? "",
+                        ),
+                    ),
+                ),
+                {
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                    },
+                },
+            );
         },
         "/github-recent-projects": async () => {
-            const res = await fetch(`https://api.github.com/users/${Bun.env.GITHUB_USERNAME}/events`).then((res) => res.json()) as GitHubEvent[];
-            return new Response(JSON.stringify(res.toReversed().filter(item => ["CreateEvent", "PushEvent"].includes(item.type!)).map(item => item.repo?.name).filter(repo => repo != null).slice(0, 3)), {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
-                }
-            });
-
-            /*
-        .Reverse()
-        .Where(item => activityEventTypes.Contains(item.type))
-        .Select(item => item.repo?.name)
-        .Where(repo => repo != null)
-        .Distinct()
-        .Take(3)
-        .ToArray()
-            */
-        }
+            const res = (await fetch(`https://api.github.com/users/${Bun.env.GITHUB_USERNAME}/events`).then((res) =>
+                res.json(),
+            )) as GitHubEvent[];
+            return new Response(
+                JSON.stringify(
+                    res
+                        .toReversed()
+                        .filter((item) => ["CreateEvent", "PushEvent"].includes(item.type!))
+                        .map((item) => item.repo?.name)
+                        .filter((repo) => repo != null)
+                        .slice(0, 3),
+                ),
+                {
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                    },
+                },
+            );
+        },
     },
 });
 

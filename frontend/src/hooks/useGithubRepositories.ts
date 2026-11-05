@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 type Repositories = {
-    repositories: {
+    repository: {
         name: string;
         url: string;
-    }[];
+    };
 }[];
 
 export function useGithubRepositories() {
