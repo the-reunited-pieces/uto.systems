@@ -106,14 +106,16 @@ const server = Bun.serve({
                 res.json(),
             )) as GitHubEvent[];
             return new Response(
-                JSON.stringify(
-                    res
-                        .toReversed()
-                        .filter((item) => ["CreateEvent", "PushEvent"].includes(item.type!))
-                        .map((item) => item.repo?.name)
-                        .filter((repo) => repo != null)
-                        .slice(0, 3),
-                ),
+                JSON.stringify([
+                    ...new Set(
+                        res
+                            .toReversed()
+                            .filter((item) => ["CreateEvent", "PushEvent"].includes(item.type!))
+                            .map((item) => item.repo?.name)
+                            .filter((repo) => repo != null)
+                            .slice(0, 3),
+                    ),
+                ]),
                 {
                     headers: {
                         "Access-Control-Allow-Origin": "*",
