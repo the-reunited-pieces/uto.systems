@@ -12,7 +12,7 @@ export function LifeStats() {
                 <br />
                 <b>Country:</b> Netherlands 🇳🇱
                 <br />
-                <b>Magic games won:</b> 2
+                <b>Magic games won:</b> 4
             </p>
         </>
     );
