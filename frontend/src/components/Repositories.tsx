@@ -8,11 +8,13 @@ export function Repos() {
     return (
         <>
             <div className="repos">
-                {repositories?.map((repo) => (
-                    <>
-                        <Repo repo={repo.repository}></Repo>
-                    </>
-                ))}
+                {repositories
+                    ?.toSorted((x, y) => x.repository.name.toLowerCase().localeCompare(y.repository.name.toLowerCase()))
+                    .map((repo) => (
+                        <>
+                            <Repo repo={repo.repository}></Repo>
+                        </>
+                    ))}
             </div>
         </>
     );
