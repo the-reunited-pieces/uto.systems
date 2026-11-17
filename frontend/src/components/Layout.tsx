@@ -9,7 +9,8 @@ export function Layout({ children }: React.PropsWithChildren) {
                     Uto
                 </h1>
                 <div id="header-spacer" className="lg-only"></div>
-                <h2 id="header-right">The Missing Pieces</h2><h2 id="header-emojis">🧭🧩</h2>
+                <h2 id="header-right">The Missing Pieces</h2>
+                <h2 id="header-emojis">🧭🧩</h2>
             </header>
             <main>{children}</main>
             <footer id="footer">
@@ -18,6 +19,8 @@ export function Layout({ children }: React.PropsWithChildren) {
                 <a href="/alters">Alters</a>
                 <div id="footer-divider"></div>
                 <a href="/projects">Projects</a>
+                <div id="footer-divider"></div>
+                <a href="/dexcom">Dexcom</a>
             </footer>
         </div>
     );

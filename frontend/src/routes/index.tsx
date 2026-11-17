@@ -1,3 +1,4 @@
+import { DexcomChartWidget } from "@/components/DexcomChartWidget";
 import { Fronter } from "@/components/Fronter";
 import { Github } from "@/components/Github";
 import { Layout } from "@/components/Layout";
@@ -13,9 +14,12 @@ function Index() {
     return (
         <Layout>
             <div className="side-by-side">
-                <Widgets widgets={[<Fronter />, <LifeStats />, <Github />, <RecentProject />]} />
+                <Widgets widgets={[<Fronter />, <LifeStats />, <DexcomChartWidget />, <Github />, <RecentProject />]} />
                 <div>
-                    <p>Hi! We're the Missing Pieces system! We also go by the collective name of Uto. We'll be updating this site with new updates, pages & more as we think of adding more to here. :)</p>
+                    <p>
+                        Hi! We're the Missing Pieces system! We also go by the collective name of Uto. We'll be updating
+                        this site with new updates, pages & more as we think of adding more to here. :)
+                    </p>
                 </div>
             </div>
         </Layout>

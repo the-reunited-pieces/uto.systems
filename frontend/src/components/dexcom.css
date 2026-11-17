@@ -1,0 +1,27 @@
+@media screen and (min-width: 800px) {
+    #container {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #container {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+}
+
+#chart {
+    flex-grow: 1;
+}
+
+#stats {
+    min-width: max(250px, 25%);
+    background-color: #88888822;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #88888888;
+}

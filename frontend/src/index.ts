@@ -1,6 +1,7 @@
 import { serve } from "bun";
-import index from "./routes/index.html";
 import alters from "./routes/alters.html";
+import dexcom from "./routes/dexcom.html";
+import index from "./routes/index.html";
 import projects from "./routes/projects.html";
 
 const server = serve({
@@ -10,6 +11,7 @@ const server = serve({
         "/static/outlined-icon.png": Bun.file("static/outlined-icon.png"),
         "/alters": alters,
         "/projects": projects,
+        "/dexcom": dexcom,
     },
 });
 

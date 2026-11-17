@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 
 type SysFronters = {
-    fronters: { id: string, timestamp: Date, members: Members[]};
+    fronters: { id: string; timestamp: Date; members: Members[] };
     members: Members[];
 };
 
-type Members = { id: string; name: string | null; display_name: string | null; description: string | null; avatar_url: string | null; pronouns: string | null };
+type Members = {
+    id: string;
+    name: string | null;
+    display_name: string | null;
+    description: string | null;
+    avatar_url: string | null;
+    pronouns: string | null;
+};
 
 export function useSysFronters() {
     const [sysfronters, setSysfronters] = useState<SysFronters | undefined | null>(undefined);
