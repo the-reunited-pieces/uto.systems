@@ -30,6 +30,6 @@ export function useDexcomData() {
         value: data.value?.records
             .map((record) => ({ time: new Date(record.systemTime), glucose: record.valueInMmoll, trend: record.trend }))
             .filter((record): record is DexcomRecord => record.glucose !== undefined),
-        sandbox: "sandbox" in data && data.sandbox,
+        sandbox: data.sandbox,
     };
 }

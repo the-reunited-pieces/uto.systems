@@ -11,7 +11,7 @@
     "dependencies": {
         "@observablehq/plot": "^0.6.19",
         "@tanstack/react-query": "^5.107.1",
-        "@the-reunited-pieces/dexcom-api": "^1.2.3",
+        "@the-reunited-pieces/dexcom-api": "^1.2.4",
         "@trpc/react": "^9.27.4",
         "@trpc/react-query": "^11.28.3",
         "@trpc/tanstack-react-query": "^11.28.3",

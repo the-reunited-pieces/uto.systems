@@ -1,13 +1,12 @@
 {
   "lockfileVersion": 1,
-  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "bun-react-template",
       "dependencies": {
         "@observablehq/plot": "^0.6.19",
         "@tanstack/react-query": "^5.107.1",
-        "@the-reunited-pieces/dexcom-api": "^1.2.3",
+        "@the-reunited-pieces/dexcom-api": "^1.2.4",
         "@trpc/react": "^9.27.4",
         "@trpc/react-query": "^11.28.3",
         "@trpc/tanstack-react-query": "^11.28.3",
@@ -46,7 +45,7 @@
 
     "@tanstack/react-query": ["@tanstack/react-query@5.107.1", "", { "dependencies": { "@tanstack/query-core": "5.107.1" }, "peerDependencies": { "@types/react": "^18 || ^19", "react": "^18 || ^19" }, "optionalPeers": ["@types/react"] }, "sha512-udCOOLp3ZAheUrIHLCe+ZZge6nr2ZUrGMSWcCuXsjY1Bf2JeeE09oxst97PILiCY6N8xo/7bIo3Hvz13zh06FA=="],
 
-    "@the-reunited-pieces/dexcom-api": ["@the-reunited-pieces/dexcom-api@1.2.3", "", { "dependencies": { "@trpc/client": "^11.28.3", "@trpc/server": "^11.28.3", "dotenv": "^18.0.10", "fastify": "^5.12.8", "zod": "^4.6.7" } }, "sha512-nvz/ILd76UsvEu+AUuGmlAJi6DNypNBtvoIEMh/ongP1nsNh/AICJ3dx4SajWGWa2DP6AOi9sjcRXpFwgiLAcg=="],
+    "@the-reunited-pieces/dexcom-api": ["@the-reunited-pieces/dexcom-api@1.2.4", "", { "dependencies": { "@trpc/client": "^11.28.3", "@trpc/server": "^11.28.3", "dotenv": "^18.0.10", "fastify": "^5.12.8", "zod": "^4.6.7" } }, "sha512-cNZoeEtD1n1db8VWPCK4l/fSQUC6tOzucQEe37nz//FAdk8pH3Gl4F7S2q6HYx0Un2hFd1zbr9lVs4YIXqn01Q=="],
 
     "@trpc/client": ["@trpc/client@11.28.3", "", { "peerDependencies": { "@trpc/server": "11.28.3", "typescript": ">=5.7.2" } }, "sha512-NnMXBOCVzPMELdQH/X26MhI4u9g83nxWy3apc7UX1beevUk6rEYqfOboqCb/rVoVPu3CBVaPb8PB7AG51oEKvQ=="],
 
