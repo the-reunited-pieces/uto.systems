@@ -21,6 +21,8 @@ export function Layout({ children }: React.PropsWithChildren) {
                 <a href="/projects">Projects</a>
                 <div id="footer-divider"></div>
                 <a href="/dexcom">Dexcom</a>
+                <div id="footer-divider"></div>
+                <a href="https://uptime.uto.systems/">Uptime</a>
             </footer>
         </div>
     );
