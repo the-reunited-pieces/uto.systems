@@ -1,3 +1,3 @@
 # Uto.Systems
 
-Welcome to The Missing pieces system page. Our collective name is Uto.
+Welcome to The Missing Pieces system page. Our collective name is Uto.
