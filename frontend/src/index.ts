@@ -12,6 +12,7 @@ const server = serve({
         "/alters": alters,
         "/projects": projects,
         "/dexcom": dexcom,
+        "/uptime": Response.redirect("https://uptime.uto.systems/status/all"),
     },
 });
 

@@ -22,7 +22,7 @@ export function Layout({ children }: React.PropsWithChildren) {
                 <div id="footer-divider"></div>
                 <a href="/dexcom">Dexcom</a>
                 <div id="footer-divider"></div>
-                <a href="https://uptime.uto.systems/status/all">Uptime</a>
+                <a href="/uptime">Uptime</a>
             </footer>
         </div>
     );
