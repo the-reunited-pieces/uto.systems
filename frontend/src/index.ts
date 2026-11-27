@@ -5,6 +5,7 @@ import index from "./routes/index.html";
 import projects from "./routes/projects.html";
 
 const server = serve({
+    port: 3001,
     routes: {
         "/": index,
         "/static/outlined-icon.svg": Bun.file("static/outlined-icon.svg"),
